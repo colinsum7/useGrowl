@@ -15,12 +15,14 @@ npm install --save use-growl-hook
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'use-growl-hook'
+import { Growl, useGrowl } from 'use-growl-hook'
 import 'use-growl-hook/dist/index.css'
 
-class Example extends Component {
+const Example = ({message}) => {
+  const [growlActive, setGrowlActive] = useGrowl(2)
+
   render() {
-    return <MyComponent />
+    return <Growl active={growlActive} message={message} onDismissed={()=> setGrowlActive(false)} />
   }
 }
 ```
